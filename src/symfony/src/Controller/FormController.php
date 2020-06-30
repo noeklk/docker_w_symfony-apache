@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
 /** @Route("/form", name="form_") */
 class FormController extends AbstractController
 {
@@ -24,21 +25,18 @@ class FormController extends AbstractController
 
     /** 
      * @Route(
-     * "/check-name",
+     * "/check-name/{nom}/{prenom}",
      * name="check-name",
-     * methods={"POST"}
+     * methods={"GET"}
      * )
      */
-    public function checkName(Request $req){
-        $nom = $req->query->get('nom');
-        $prenom = $req->query->get('prenom');
-
-
-        if(preg_match('/\d+/', $nom) || preg_match('/\d+/', $prenom)){
+    public function checkName($nom, $prenom)
+    {
+        if (preg_match('/\d+/', $nom) || preg_match('/\d+/', $prenom)) {
             throw $this->createNotFoundException('Le nom ou prénom ne doivent pas comporter de chiffre');
         }
 
-        if(ucwords($nom) != $nom || ucwords($prenom) != $prenom) {
+        if (ucwords($nom) != $nom || ucwords($prenom) != $prenom) {
             throw new \Exception('La première lettre du nom ou prénom doivent être en majuscule');
         }
 

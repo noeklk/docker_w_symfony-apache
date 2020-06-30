@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}View Flash Message{% endblock %}
+
+{% block body %}
+    {% for flash_message in app.flashes('message') %}
+        <p>{{ flash_message }} </p>
+    {% endfor %}
+{% endblock %}

@@ -29,9 +29,10 @@ class RedirController extends AbstractController
      * methods={"GET"}
      * )
      */
-    public function lemondeRedirection(){
+    public function lemondeRedirection()
+    {
         $url = "http://www.lemonde.fr";
-        
+
         return $this->redirect($url);
     }
 
@@ -41,10 +42,10 @@ class RedirController extends AbstractController
      * name="form_check-name"
      * )
      */
-    public function formCheckNameRedirection(Request $req){
-        $nom = $req->query->get('nom');
-        $prenom = $req->query->get('prenom');
+    public function formCheckNameRedirection($nom, $prenom)
+    {
+        $url = $this->generateUrl("check-name/$nom/$prenom", array('nom' => $nom, 'prenom' => $prenom));
 
-        return $this->redirectToRoute('check-name', array('nom' => $nom, 'prenom' => $prenom));
+        return new RedirectResponse($url);
     }
 }
