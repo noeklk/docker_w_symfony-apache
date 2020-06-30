@@ -25,13 +25,16 @@ class FormController extends AbstractController
 
     /** 
      * @Route(
-     * "/check-name/{nom}/{prenom}",
+     * "/check-name",
      * name="check-name",
      * methods={"GET"}
      * )
      */
-    public function checkName($nom, $prenom)
+    public function checkName(Request $req)
     {
+        $nom = $req->query->get('nom');
+        $prenom = $req->query->get('prenom');
+
         if (preg_match('/\d+/', $nom) || preg_match('/\d+/', $prenom)) {
             throw $this->createNotFoundException('Le nom ou prénom ne doivent pas comporter de chiffre');
         }
