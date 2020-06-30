@@ -1,4 +1,6 @@
 {
+    "name": "noe/docker_project",
+    "description": "Projet symfony avec docker",
     "type": "project",
     "license": "proprietary",
     "require": {

@@ -17,4 +17,8 @@ class TestController extends AbstractController
             'controller_name' => 'TestController',
         ]);
     }
+
+    public function redirectMe(){
+        
+    }
 }
