@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Exercice include{% endblock %}
+
+{% block body %}
+    <br />
+    <div class="container">
+        {% for pays, number in countryArray %}
+            
+                <ul class="list">
+                    <li class="waves-effect">
+                    {{ render (controller(
+                        'App\\Controller\\HelloController::hello', 
+                            {'number':  number, 'pays': pays}
+                    ))}}
+                    </li>
+                </ul>
+            
+        {% else %}
+            <h2>Aucun pays en entrée</h2>
+        {% endfor %}
+    </div>
+{% endblock %}
