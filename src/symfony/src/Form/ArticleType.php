@@ -14,8 +14,7 @@ class ArticleType extends AbstractType
         $builder
             ->add('titre')
             ->add('contenu')
-            ->add('prixHT')
-        ;
+            ->add('prixHT');
     }
 
     public function configureOptions(OptionsResolver $resolver)
